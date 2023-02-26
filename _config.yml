@@ -2,5 +2,5 @@ remote_theme: pages-themes/slate@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 
-title: [Recipe Analysis]
-description: [A short analysis of 83,782 recipies scraped from food.com for my UCSD DSC 80 class.]
+title: [🍽️ Recipe Analysis]
+description: [A short analysis of 83,782 recipes and their corresponding reviews scraped from food.com. ]
