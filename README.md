@@ -20,7 +20,7 @@ After calculating the `'avg rating'` column, I got to work converting columns in
 
 **Let's take a look at our cleaned dataframe!**
 
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width: 50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
