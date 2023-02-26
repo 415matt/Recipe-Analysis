@@ -1,3 +1,5 @@
+### Introduction:
+
 What interests me most is how the properties of the dish - (nutritional info, prep time, etc) effects how users rate the recipe.
 
 I personally have a tendency to enjoy foods high in sugars & fats, and was curious to learn: *Does the amount of sugar in a recipe influence the rating of the dish?* During my journey to answering this question, I also discovered correlations between certain nutritional contents and overall calories. 
@@ -8,11 +10,11 @@ This dataset as well as my analysis provides insights into the shared activity o
 
 ## Cleaning & Exploratory Data Analysis 
 <br>
-The Dataset I am working with is a result of two seperate datasets - A `recipes` dataset and a `reviews` dataset containing reviews for the recipes. These datasets were merged together based on the recipe id, resulting in duplicate recipe rows for each review, something that I had to keep in mind while working with the data. 
+The Dataset I am working with is a result of two separate datasets - A `recipes` dataset and a `reviews` dataset containing reviews for the recipes. These datasets were merged together based on the recipe id, resulting in duplicate recipe rows for each review, something that I had to keep in mind while working with the data. 
 
-Once merged, I replaced the recipes with a rating of '0' with null values, as the lowest you can give a recipie is 1 star. The only way a recipe could be rated '0' would be if the review didn't include a rating or the recipe has no reviews. If the rating doesn't exist, a null value will better represent the dish's rating and makes calculating the average rating of a recipe more accurate as the 0's won't drag down the average. 
+Once merged, I replaced the recipes with a rating of '0' with null values, as the lowest you can give a recipe is 1 star. The only way a recipe could be rated '0' would be if the review didn't include a rating or the recipe has no reviews. If the rating doesn't exist, a null value will better represent the dish's rating and makes calculating the average rating of a recipe more accurate as the 0's won't drag down the average. 
 
-After calculating the `'avg rating'` column, I got to work converting columns into their proper values. Dates into DateTime objects, Strings representing lists into actual lists, and dropping the duplicate ID column. Finally, to make my life easier when answering my question, I changed the `'nutrition'` column containing various nutritional info about the recipie in a list into their own seperate columns: `'total fat (PDV)'`, `'sugar (PDV)'`, `'sodium (PDV)'`, `'protein (PDV)'`, `'saturated fat (PDV)'`, `'carbohydrates (PDV)'`.
+After calculating the `'avg rating'` column, I got to work converting columns into their proper values. Dates into DateTime objects, Strings representing lists into actual lists, and dropping the duplicate ID column. Finally, to make my life easier when answering my question, I changed the `'nutrition'` column containing various nutritional info about the recipe in a list into their own separate columns: `'total fat (PDV)'`, `'sugar (PDV)'`, `'sodium (PDV)'`, `'protein (PDV)'`, `'saturated fat (PDV)'`, `'carbohydrates (PDV)'`.
 
 
 <br>
@@ -191,7 +193,7 @@ After calculating the `'avg rating'` column, I got to work converting columns in
 
 
 **Univariate Analysis:**
-In order to account for outliers in the `'minutes'` column, I chose to only graph data in the 95th percentile. This solution preserves outliers in my dataframe in case I would like to work with them in the future, while still presenting the data in a clean, understandable way. 
+In order to account for outliers in the `'minutes'` column, I chose to only graph data in the 95th percentile. This solution preserves outliers in my dataframe in case I want to work with them in the future, while still presenting the data clean and understandable. 
 
 <iframe src="assets/Recipes Time Distribution.html" width=800 height=600 frameBorder=0></iframe>
 
@@ -202,24 +204,24 @@ In order to account for outliers in the `'minutes'` column, I chose to only grap
 
 
 **Bivariate Analysis:**
- I wanted to see if there was a noticeable difference in correlation of fat vs calories to protein vs calories. Like the previous graphs, I limited my data to within the 99.9th percentile in order to avoid the extreme outliers while still keeping as much data as possible.
+ I wanted to see if there was a noticeable difference in the correlation between fat vs calories to protein vs calories. Like the previous graphs, I limited my data to within the 99.9th percentile in order to avoid extreme outliers while still keeping as much data as possible.
 
 <iframe src="assets/total fat (PDV) vs Calories.html" width=800 height=600 frameBorder=0></iframe>
 
-*Here we see a significant positive correlation between Percent Daily Value of Fat and total calories of the dish.*
+*Here we see a significant positive correlation between the Percent Daily Value of Fat and the total calories of the dish.*
 
 <iframe src="assets/protein (PDV) vs Calories.html" width=800 height=600 frameBorder=0></iframe>
 
-*Here we see a noticeably more spread, however still positive correlation between Percent Daily Value of Protein and total calories of the dish.*
+*Here we see a noticeably more spread, however still a positive correlation between the Percent Daily Value of Protein and total calories of the dish.*
 
 <br>
 
-I thought that these plots were interesting, as it shows that protein is more losely correlated to calories compared to Fat. This makes sense, as fat is 9 calories per gram wheras protein is only 4 cal/g, making fat a larger contributor to total calories. There is also a suprisingly straight line lower limit that can be drawn in the `total fat (PDV) vs Calories` graph. I belive that this line would represent the minimum amount of calories a dish can be given it's PDV of Fat.
+I thought that these plots were interesting, as it shows that protein is more loosely correlated to calories compared to Fat. This makes sense, as fat is 9 calories per gram whereas protein is only 4 cal/g, making fat a larger contributor to total calories. There is also a surprisingly straight line lower limit that can be drawn in the `total fat (PDV) vs Calories` graph. I believe that this line would represent the minimum amount of calories a dish can be given its PDV of Fat.
 
 <br>
 
 **Interesting Aggregates:**
-One of the interesting aggregates I created was seeing the distribution of reviews by rating. From this aggregation, I saw that written reviews were mostly left for 'good' dishes (rated 4 or 5 stars) wheras people were less likely to take the time to write a bad review (dishes rated 1-3 stars).
+One of the interesting aggregates I created was seeing the distribution of reviews by rating. From this aggregation, I saw that written reviews were mostly left for 'good' dishes (rated 4 or 5 stars) whereas people were less likely to take the time to write a bad review (dishes rated 1-3 stars).
 
 |   rating |   Probability of writing a Review |
 |---------:|----------------------------------:|
@@ -234,11 +236,34 @@ One of the interesting aggregates I created was seeing the distribution of revie
 
 --- 
 ## Assessment of Missingness
-* **NMAR Analysis**
+* **NMAR Analysis:**
+Out of all 3 columns containing missing values - `('rating', 'review', 'description')` I believe that `'review'` would be the most likely candidate to be Not Missing at Random (NMAR). This is because we do not have data on recipe popularity or views. Without knowing how popular a dish is or how many people have tried the recipe, we cannot accurately quantify people's likeliness to write a review. If we had this data, and it showed that the likelihood of writing a review depended on the number of views it received, we could change the classification to MAR, but right now there is not enough information to rule out NMAR.
+
+
+<br> 
 
 
 * **Missingness Dependency**
+<iframe src="assets/Empirical Distribution of the TVD dependant on rating.html" width=800 height=600 frameBorder=0></iframe>
+
+From this plot, we can conclude that it is unlikely that the missingness of `'review'` depends on `'rating'`. This is because the probability of seeing a value greater than our observed statistic is 0.836, which is far from our rejection cutoff at 0.05. We can also see visually that our observed statistic is well within the Empirical distribution.
+
+<br>
 
 --- 
 ## Hypothesis Testing
+<br>
+
+### What is the relationship between the sugar (PDV) and the average rating of recipes?
+
+
+**null:** There is no relationship between sugar (PDV) and the average rating of recipes.
+
+**alternative:** There is a relationship between sugar (PDV) and the rating of recipes.
+
+In order to answer my question, I performed a permutation test. This is because I am limited to the data that I have and do not know the actual distribution of either sugar or ratings. I split `'sugar (PDV)'` down its median in order to classify a recipe as "high" in sugar or "low" in sugar. This made it easy to calculate TVD for the observed data as well as create an empirical distribution. 
+
+<iframe src="assets/hypothesis.html" width=800 height=600 frameBorder=0></iframe>
+
+My P value of 0.0 caused me to reject the null hypothesis in favor of the alternative: There exists a relationship between sugar and recipe rating.
 
