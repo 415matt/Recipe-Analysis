@@ -261,9 +261,9 @@ From this plot, we can conclude that it is unlikely that the missingness of `'re
 
 **alternative:** There is a relationship between sugar (PDV) and the rating of recipes.
 
-In order to answer my question, I performed a permutation test. This is because I am limited to the data that I have and do not know the actual distribution of either sugar or ratings. I split `'sugar (PDV)'` down its median in order to classify a recipe as "high" in sugar or "low" in sugar. This made it easy to calculate TVD for the observed data as well as create an empirical distribution. 
+In order to answer my question, I performed a permutation test. This is because I am limited to the data that I have and do not know the actual distribution of either sugar or ratings. For my test statistic, I split `'sugar (PDV)'` down its median in order to classify a recipe as "high" in sugar or "low" in sugar. This made it easy to calculate TVD for the observed data as well as create an empirical distribution. 
 
 <iframe src="assets/hypothesis.html" width=800 height=600 frameBorder=0></iframe>
 
-My P value of 0.0 caused me to reject the null hypothesis in favor of the alternative: There exists a relationship between sugar and recipe rating.
+My P value of 0.0 caused me to reject the null hypothesis at a significance level of 0.05 in favor of the alternative: There exists a relationship between sugar and recipe rating.
 
