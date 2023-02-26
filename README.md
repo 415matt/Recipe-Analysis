@@ -2,15 +2,15 @@ What interests me most is how the properties of the dish - (nutritional info, pr
 
 I personally have a tendency to enjoy foods high in sugars & fats, and was curious to learn: *Does the amount of sugar in a recipe influence the rating of the dish?* During my journey to answering this question, I also discovered correlations between certain nutritional contents and overall calories. 
 
-This dataset as well as my analysis provides insights into the shared activity of creating meals that humans have been participating in for millions of years. Because recipies have been repeated to note their corresponding rating/review, this dataset contains 234,429 rows and 23 columns. Some columns of interest include 'ratings'-(floats between 0-5), 'calories'-(shown as floats), 'sugar (PDV)'-(Amount of Sugar in the dish represented by percent of daily value).
+This dataset as well as my analysis provides insights into the shared activity of creating meals that humans have been participating in for millions of years. Because recipes have been repeated to note their corresponding rating/review, this dataset contains 234,429 rows and 23 columns. Some columns of interest include 'ratings'-(floats between 0-5), 'calories'-(shown as floats), 'sugar (PDV)'-(Amount of Sugar in the dish represented by percent of daily value).
 
 --- 
 
 ## Cleaning & Exploratory Data Analysis 
 <br>
-The Dataset I am working with is a result of two seperate datasets - A `recipies` dataset and a `reviews` dataset containing reviews for the recipies. These datasets were merged together based on the recipe id, resulting in duplicate recipe rows for each review, something that I had to keep in mind while working with the data. 
+The Dataset I am working with is a result of two seperate datasets - A `recipes` dataset and a `reviews` dataset containing reviews for the recipes. These datasets were merged together based on the recipe id, resulting in duplicate recipe rows for each review, something that I had to keep in mind while working with the data. 
 
-Once merged, I replaced the recipies with a rating of '0' with null values, as the lowest you can give a recipie is 1 star. The only way a recipe could be rated '0' would be if the review didn't include a rating or the recipe has no reviews. If the rating doesn't exist, a null value will better represent the dish's rating and makes calculating the average rating of a recipe more accurate as the 0's won't drag down the average. 
+Once merged, I replaced the recipes with a rating of '0' with null values, as the lowest you can give a recipie is 1 star. The only way a recipe could be rated '0' would be if the review didn't include a rating or the recipe has no reviews. If the rating doesn't exist, a null value will better represent the dish's rating and makes calculating the average rating of a recipe more accurate as the 0's won't drag down the average. 
 
 After calculating the `'avg rating'` column, I got to work converting columns into their proper values. Dates into DateTime objects, Strings representing lists into actual lists, and dropping the duplicate ID column. Finally, to make my life easier when answering my question, I changed the `'nutrition'` column containing various nutritional info about the recipie in a list into their own seperate columns: `'total fat (PDV)'`, `'sugar (PDV)'`, `'sodium (PDV)'`, `'protein (PDV)'`, `'saturated fat (PDV)'`, `'carbohydrates (PDV)'`.
 
@@ -41,7 +41,7 @@ In order to account for outliers in the `'minutes'` column, I chose to only grap
 
 <iframe src="assets/Recipes Time Distribution.html" width=800 height=600 frameBorder=0></iframe>
 
-*Notice that the time distribution is not smooth. This is because of the tendency of users to round their times. (Eg instead of reporting a recipe takes 33 mins users submit 35 mins).* 
+*Notice that the time distribution is not smooth. This is because of the tendency of users to round their times. (eg instead of reporting a recipe takes 33 mins users submit 35 mins).* 
 
 <br>
 
@@ -76,6 +76,7 @@ One of the interesting aggregates I created was seeing the distribution of revie
 |        5 |                         0.723592  |
 
 
+<br>
 
 --- 
 ## Assessment of Missingness
